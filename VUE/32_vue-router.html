@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <ul>
+            <li><a href="#/aaa">AAA</a></li>
+            <li><a href="#/bbb">BBB</a></li>
+            <li><a href="#/ccc">CCC</a></li>
+            <li><a href="#/ddd">DDD</a></li>
+        </ul> -->
+
+        <!-- 1.设置链接 -->
+        <router-link to="/aaa">AAA</router-link>
+        <router-link to="/bbb">BBB</router-link>
+        <router-link to="/ccc">CCC</router-link>
+        <router-link to="/ddd">DDD</router-link>
+
+        <!-- <div id="container">
+        </div> -->
+
+        <!-- 2.设置容器 -->
+        <router-view></router-view>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+
+    <script>
+        //3.提供要渲染的组件
+        var comA = {
+            template:`<div>AAAAAA</div>`
+        }
+        var comB = {
+            template:`<div>BBBBBB</div>`
+        }
+        var comC = {
+            template:`<div>CCCCCC</div>`
+        }
+        var comD = {
+            template:`<div>DDDDDD</div>`
+        }
+
+        //4.实例化路由
+        var router = new VueRouter({
+           //路由选项
+           //5.routes:[{路由配置}] 
+           //根据不同的routerlink标识在容器router-view渲染不同的组件
+           routes:[{
+               path:'/aaa',
+               component:comA
+           },{
+               path:'/bbb',
+               component:comB
+           },{
+               path:'/ccc',
+               component:comC
+           },{
+               path:'/ddd',
+               component:comD
+           }]
+        })
+
+        new Vue({
+            el:'#app',
+            //6.挂载路由
+            router
+        })
+
+        // var div = document.getElementById("container");
+        // //获取到不同的点击a标签对应的hash值
+        // //hash值变化时触发该事件
+        // window.onhashchange = function(){
+        //    //  console.log("------");
+        //    var hash = location.hash;
+        //    // console.log(hash);
+        //    hash = hash.replace("#","");
+        //    switch(hash){
+        //        case "/aaa":
+        //            div.innerHTML = "AAAAA";
+        //            break;
+        //        case "/bbb":
+        //            div.innerHTML = "BBBBB";
+        //            break;
+        //        case "/ccc":
+        //            div.innerHTML = "CCCCC";
+        //            break;
+        //        case "/ddd":
+        //            div.innerHTML = "DDDDD";
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        // }
+    </script>
+</body>
+</html>
+
+<!-- 
+    vue-router是vue核心插件
+    注意：先引入vue.js 再引入vue-router.js
+ -->

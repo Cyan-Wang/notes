@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //当直接在网页上打印一个对象时，事实上是输出的对象的toString()方法的返回值
+        function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+        //如果希望在输出对象时不输出[object Object],可以为对象添加一个toString()方法
+        var per = new Person("孙悟空","18","男");
+        per.toString = function(){
+            return "Person[name="+this.name+",age="+this.age+",gender="+this.gender+"]";
+        }
+        console.log(per.toString());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

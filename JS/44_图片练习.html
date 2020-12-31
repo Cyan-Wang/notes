@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+        }
+        #outer{
+            width:320px;
+            margin: 100px auto;
+            background-color: grey;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            /*点击按钮切换图片*/
+            //获取两个按钮
+            var prev = document.getElementById("prev");
+            var next = document.getElementById("next");
+            //获取p标签
+            var info = document.getElementById("info");
+
+            /*要切换图片就是要修改img标签的src属性*/
+            //获取img标签
+            var img = document.getElementsByTagName("img")[0];
+            //创建一个数组，保存所有图片的路径
+            var imgArr = ["../images/Evil Matt Coding.jpg","../images/Roeland.jpg","../images/Discussion.jpg"];
+            var index = 2;
+            prev.onclick = function(){
+                index--;
+                if(index < 0){
+                    index = 0;
+                }
+                img.src = imgArr[index];
+                info.innerHTML = "当前第"+index+"张图片";
+            };
+            next.onclick = function(){
+                index++;
+                if(index >= imgArr.length){
+                    index = (imgArr.length)-1;
+                }
+                img.src = imgArr[index];
+                info.innerHTML = "当前第"+index+"张图片";
+            };
+        };
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <p id="info">当前第2张图片</p>
+        <img src="../images/Discussion.jpg" alt="Discussion">
+        <button id="prev"><上一张</button> 
+        <button id="next">下一张></button> 
+    </div>
+</body>
+</html>

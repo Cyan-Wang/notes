@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            v-model
+            其实是简化写法（语法糖）
+            特点：双向数据绑定
+            1.输入框中的value值来自于msg
+            2.value变化->msg->p标签使用的数据msg变化
+         -->
+
+         <!-- 
+             模拟v-model
+             1. <input :value="msg">
+          -->
+          {{msg}}
+          <!-- $event 当前事件对象 e.target.value -->
+          <input :value="msg" @input="msg=$event.target.value">
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"abc"
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

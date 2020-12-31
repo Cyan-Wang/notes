@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg|toUpper}}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"abc"
+            },
+            //局部过滤器是Vue的一个选项filters
+            //注意：不要忘记s
+            filters:{
+                //选项filters的值是一个对象，对象里面是key:value
+                //key是该过滤器名称，
+                // toUpper:function(v){}等同下面的写法
+                toUpper(v){
+                    return v.charAt(0).toUpperCase()+v.substr(1);
+                } 
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            width: 600px;
+            margin: 10px auto;
+        }
+
+        .tb{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tb th{
+            background-color: #0094ff;
+            color: white;
+        }
+
+        .tb td,
+        .tb th{
+            padding: 5px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .add{
+            padding: 5px;
+            border: 1px solid black;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- 
+    一：列表渲染
+    1.找到重复出现的标签结构
+    2.确定要用的指令，v-for列表渲染 （v,i）in 容器
+    3.在data中提供一个list
+    4.在视图中使用插值表达式使用数据
+
+    三：添加商品
+    1.找到输入框-> v-model="data中的数据"
+    2.在data中提供一个itemname数据
+    3.找到按钮 绑定事件 @click="方法名"
+    4.在methods中提供一个方法
+    5.在方法中向list数组中添加元素
+
+    四：删除商品
+    1.找到删除按钮 @click="deleteItem"
+    2.在methods中提供deleteItem（）方法
+    3.在deleteItem()中从list移除当前元素
+
+    表格案例的其他效果：1.自动获取焦点 2.日期格式处理
+    五：日期格式处理->过滤器
+
+    五：商品搜索功能
+    //filter是JS中数组自带的方法
+    //遍历数组 可以把满足条件的元素添加到新数组中，并且返回新数组
+    //var arr = [].filter((item)=>{return 条件})     item就是被遍历的数组
+    
+    //ES6新方法
+    //startsWith():返回布尔值，表示参数字符串是否在原字符串的头部。 let s = "Hello World!"    s.startsWith("Hello")//true
+ -->
+<div id="app">
+   <div class="add">
+       品牌名称：
+       <input type="text" v-model="itemname" v-focus>
+       <input type="button" value="添加" @click="addItem()" :disabled="!itemname.length">
+   </div> 
+
+   <div class="add">
+       品牌名称：
+       <input type="text" placeholder="请输入搜索条件" v-model="searchVal">
+   </div>
+
+   <div>
+       <table class="tb">
+            <tr>
+                <th>编号</th>
+                <th>品牌名称</th>
+                <th>创立时间</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="(v,i) in newlist">
+                <td>{{i+1}}</th>
+                <td>{{v.name}}</th>
+                <td>{{v.date | fmtDate}}</th>
+                <td>
+                    <!-- prevent:拦截默认事件 -->
+                    <a href="#" @click.prevent="deleteItem(i)">删除</a>
+                </th>
+            </tr>
+            <tr v-if="list.length===0">
+                <td colspan="4">没有品牌数据</td>
+            </tr>
+       </table>
+   </div>
+</div>
+   <script src="./vue.js"></script>
+   <script src="./moment.js"></script>
+   <script>
+        var list=[
+            {name:"苹果",date:new Date()},{name:"华为",date:new Date()},{name:"小米",date:new Date()}
+            ];
+        var vm = new Vue({
+           //模仿ajax返回的数据
+           el:"#app",
+           data:{
+                list,
+                //输入框要绑定的数据
+                itemname:"",
+                searchVal:""
+           },
+           filters:{
+                fmtDate(v){
+                    return moment(v).format("YYYY-MM-DD hh:mm:ss");
+                }
+           },
+           directives:{
+                focus:{
+                    inserted(el){
+                        el.focus();
+                    }
+                }
+           },
+           computed:{
+               newlist(){
+                   return this.list.filter((item)=>{
+                       return item.name.startsWith(this.searchVal);
+                   })
+               }
+           },
+           methods:{
+               //添加商品的方法
+                addItem(){
+                    this.list.push({
+                        name:this.itemname,
+                        date:new Date
+                    });
+                },
+                //删除商品
+                deleteItem(index){
+                    //splice(索引，长度1)
+                    if(confirm("确认删除"+this.list[index].name+"？")){
+                        this.list.splice(index,1)
+                    }
+                }
+           }
+       })
+   </script>
+</body>
+</html>

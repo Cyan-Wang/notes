@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 计算属性使用场景：当模板内的表达式过于复杂
+        代码位置：通过选项computed:{计算属性a:值}
+        值：带有返回值return的函数
+        计算属性a和data中的数据用法一样
+    -->
+
+    <!-- 计算属性和methods区别
+        
+    -->
+    <div id="app">
+        <!-- {{msg}} -->
+        <!-- <hr /> -->
+        <!-- {{str}} -->
+        <p>methods中的方法</p>
+        <p>{{fn1()}}</p>
+        <p>{{fn1()}}</p>
+        <p>{{fn1()}}</p>
+        <p>计算属性中的方法</p>
+        <p>{{fn2}}</p>
+        <p>{{fn2}}</p>
+        <p>{{fn2}}</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                //如果data中的数据b依赖了数据a
+                //此时把数据b改写在计算属性中
+                //特点：当被依赖的数据a发生变化时，计算属性b随之变化
+                msg:"abc"
+            },
+            //选项computed:{}
+            //计算属性的方法特点：当计算属性fn2没有依赖data中的数据时，当第一次使用计算属性时，会把第一次的结果进行缓存
+            //后面再使用计算属性时，都会去第一次的结果中进行查找
+            //计算属性用法和data中的数据使用方法相同，不加括号
+            computed:{
+                // str:function(){
+                    // return this.msg+"xyz";
+                // }
+                fn2(){
+                    console.log("fn2~~~~~");
+                    return new Date();
+                }
+            },
+            //methods方法：每调用一次就触发一次
+            methods:{
+                fn1(){
+                    console.log("fn1~~~~~");
+                    return new Date();
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

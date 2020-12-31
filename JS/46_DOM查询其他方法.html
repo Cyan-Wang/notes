@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            //获取body标签
+            //在document中有一个属性，它保存的是body的引用
+            var body = document.body;
+            //document.documentElement保存的是html根标签
+            var html = document.documentElement;
+            //document.all代表页面中所有的元素
+
+            //getElementsByClassName()可以根据class属性值获取一组元素节点对象，但是对于IE只支持9以上
+
+            //获取class为box1中所有的div
+            /*
+                document.querySelector()
+                -需要一个选择器的字符串作为参数，可以根据一个CSS选择器来查询一个元素节点对象
+                IE8也可以使用
+                使用该方法总会返回唯一的一个元素，如果满足条件的元素有多个，它只会返回第一个
+                document.querySelectorAll也支持IE8且可以返回所有满足条件元素,和querySelector()用法类似，不同的是它会将符合条件的元素封装到一个数组中返回
+                即使符合条件的元素只有一个也会返回数组
+            */
+           var div = document.querySelector(".box1 div");
+           console.log(div.innerHTML);
+        };
+    </script>
+</head>
+<body>
+    <div class="box1">
+        <div>我是box1中的div</div>
+    </div>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg">
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:''
+            },
+            //watch选项
+            //作用：监测已经存在的属性
+            //使用场景：当需要在数据变化时执行异步或开销较大操作时
+            watch:{
+                //被监测的数据名：函数(){}
+                //当被监测的属性msg变化时，会触发方法
+                msg(newVal,oldVal){
+                    console.log(newVal,oldVal);
+                }
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

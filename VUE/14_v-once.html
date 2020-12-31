@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- v-once解决的问题
+         当标签只需要被渲染一次时，不需要赋值 
+    -->
+    <div id="app">
+        <p v-once>{{msg}}</p>
+        <input type="text" v-model="msg">
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"abcd"
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

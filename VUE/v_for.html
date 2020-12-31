@@ -1,0 +1,31 @@
+<!-- 
+    v-for 列表渲染数组
+    语法:v-for="item in 数组"
+    写法1 item指的是数组中每个元素的值
+    写法2 (item,index) in 数组，item依然指的是数组中每个元素的值，index指的是每个元素的下标
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <title></title>
+ </head>
+ <body>
+    <div id="app">
+        
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                list:['欧美','日韩','国产']
+            },
+            methods:{
+
+            }
+        })
+    </script>
+     
+ </body>
+ </html>

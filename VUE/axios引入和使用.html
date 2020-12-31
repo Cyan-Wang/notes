@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./axios.min.js"></script>
+    <script>
+        // axios语法：
+        // axios
+        //      .请求方式（url）
+        //      .then((res)=>{获取数据res.data})
+        //      .catch((err)=>{})
+
+
+        //get查询数据
+        // axios
+        //     .get('http://localhost:3000/brands')
+        //     .then((res)=>{
+        //         // console.log(res);
+
+        //         //来源于ES6，专业术语叫对象的解构赋值,右侧是对象，想要取的值左侧也用对象来接收，想要提取哪个值就把想要提取的key名放在左侧
+        //         //const {status,data} = {status:?,data:?,其他key:???}
+        //         const {status,data} = res;
+        //         if(status===200){
+        //             // console.log(data);
+        //         }
+        //     })
+        //     .catch((err)=>{
+
+        //     })
+
+        //post添加数据
+        //axios.post(url,{要添加的数据})
+        // axios
+        //     .post("http://localhost:3000/brands",{
+        //         name:"OPPO",
+        //         date:new Date()
+        //     })
+        //     .then((res)=>{
+        //         console.log(res.status);
+        //     })
+
+
+        //put 修改/更新数据
+        // axios.put(url/id,{修改后的数据})
+        // axios
+        //     .put("http://localhost:3000/brands/2",{
+        //         name:"XiaoApple",
+        //         date:new Date()
+        //     })
+        //     .then((res)=>{
+        //         console.log(res.status);
+        //     })
+
+        //delete 删除数据
+        axios
+            .delete("http://localhost:3000/brands/2")
+            .then((res)=>{
+                console.log(res.status);
+            })
+
+    </script>
+</body>
+</html>

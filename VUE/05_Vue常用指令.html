@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  
+        v-text和v-html
+        很像innerText和innerHTML
+        v-text:更新标签中的内容
+            v-text和插值表达式区别：v-text更新整个标签中的内容  插值表达式更新标签中局部内容
+        v-html:更新标签中的内容/标签
+            可以渲染内容中的HTML标签
+            注意：尽量避免使用，容易造成危险（XSS跨站脚本攻击）
+
+        最常用：插值表达式
+    -->
+    <div id="app">
+        <!-- <p v-text="msg">我是p标签的全部内容</p> -->
+        <!-- <p v-text="msg">{{count}}</p> -->
+        <p v-text="str"></p>
+        <hr />
+        <p v-html="str"></p>
+    </div>   
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                count:100,
+                msg:"1000~",  
+                str:"<span>我是span标签</ span>"
+            },
+            methods:{
+       
+            }
+        })
+    </script>   
+</body>
+</html>

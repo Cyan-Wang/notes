@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.undefined与null的区别？
+            undefined代表了定义了但未赋值
+            null定义了并赋值了但值为null
+        2.什么时候给变量赋值为null呢？
+            初始赋值，表明将要赋值为对象。
+            结束前赋值为null，让对象成为垃圾对象被垃圾回收器回收.
+        3.严格区别变量类型与数据类型？
+            数据的类型：基本类型、对象类型
+            变量的类型（变量内存值的类型）：
+                基本类型:保存的就是基本类型的数据
+                引用类型：保存的是地址值
+     -->
+<script type="text/javascript">
+    //1.undefined与null的区别
+    // var a;
+    // console.log(typeof a,a);
+    // console.log(a,typeof a);
+    // console.log(typeof a);
+    // a = null;
+    // console.log(typeof a,a);
+
+    //初始
+    var b = null;//初始赋值为null，表示将要赋值为对象，所以typeof b返回object
+    //确定对象就赋值
+    b = ['asc',12];
+    //最后释放
+    b = null;//让b指向的对象成为垃圾对象(被垃圾回收器回收)
+
+</script>
+    
+</body>
+</html>

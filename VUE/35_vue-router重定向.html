@@ -1,0 +1,72 @@
+<!-- 
+    重定向：强制修改url标识 重新发起请求(重新执行路由匹配规则)
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 1.设置链接 -->
+        <router-link to="/ball/basketball">篮球</router-link>
+        <router-link to="/ball/football">足球</router-link>
+        <router-link to="/ball/baseball">棒球</router-link>
+        <router-link to="/run">跑步</router-link>
+
+        <!-- 2.设置容器 -->
+        <router-view></router-view>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+
+    <script>
+        //3.提供要渲染的组件
+        //想知道路由配置中的path中的动态参数值是什么
+        //在视图中可以通过$route.params.id获取到id的值
+        var ballCom= {
+            template:`<div>球组件{{$route.params.id}}</div>`
+        }
+        var runCom = {
+            template:`<div>跑步组件</div>`
+        }
+
+        //4.实例化路由
+        var router = new VueRouter({
+           //路由选项
+           //5.routes:[{路由配置}] 
+           //动态路由
+           //:id参数名 其值是变化的
+           routes:[{
+               path:'/ball/:id',
+               component:ballCom
+           },{
+               path:'/run',
+               component:runCom
+           },
+           //redirect重定向 强制修改url标识
+           {
+               path:'/',redirect:{
+                   path:'/run'
+               }
+           },
+           //如果用户输入错误的标识 也渲染首页runCom
+           {
+               path:'*',
+               component:runCom
+           }
+           ]
+        })
+
+        new Vue({
+            el:'#app',
+            //6.挂载路由
+            router
+        })
+
+    </script>
+</body>
+</html>

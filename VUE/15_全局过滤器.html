@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.过滤器使用场景：当数据格式需要处理时（文本格式化）
+        2.分类：全局和局部（本地）
+        3.使用位置：{{msg|过滤器}} 和v-bind:属性="表达式|过滤器"
+     -->
+    <div id="app">
+        {{msg|toUpper}}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        //全局过滤器————在new Vue之前
+        //步骤1：在new Vue之前Vue.filter("过滤器名字",function(){})定义过滤器
+        //2.在过滤器的函数中，实现具体的函数处理function(v){}
+        //v是当前过滤器的调用者，即被处理的数据，是自带的参数
+        //3.在视图中使用过滤器{{msg|过滤器名字}}
+
+        //假设需求："abc"->"Abc"
+        Vue.filter("toUpper",(v)=>{
+            //v其实就是msg->"abc"
+            //v是自带参数 不需要我们传入
+            //charAt() 取出下标为0的字符
+            //substr()截取字符串
+            return v.charAt(0).toUpperCase()+v.substr(1);
+        })
+
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"abc"
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

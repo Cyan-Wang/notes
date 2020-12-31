@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 场景:在vue中操作dom元素 -->
+    <div id="app">
+        <!-- 
+            获取焦点->没有相应的指令->在vue中操作dom元素
+            1.给要操作的dom元素设置ref属性值
+            2.在选项mounted方法中获取要操作的dom元素 this.$refs.ref属性值
+         -->
+         <input type="text" ref="txt">
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+
+            },
+            //获取要操作的dom元素
+            //选项mounted(){}
+            //页面加载完后会自动触发
+            //类比window.onload，页面加载完才能操作DOM
+            mounted(){
+                this.$refs.txt.focus();
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

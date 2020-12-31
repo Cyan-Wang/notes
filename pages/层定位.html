@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>层定位</title>
+    <style type="text/css">
+        div{
+            border:1px solid red;
+            color:white;
+        }
+        #father{
+            width:510px;
+            height:288px;
+            position:relative;
+        }
+        #son{
+            width:99%;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+        <img src="../images/homelog.jpg" alt="图片">
+        <div id="son">Web前端开发~~~~~~~~~~~~~~~</div>
+    </div>
+</body>
+</html>

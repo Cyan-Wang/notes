@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            指令
+            作用：增强了html标签的功能
+            所有的指令都是以v-开头 但是有缩写
+            所有指令代码位置 标签的开始标签位置
+            所有的指令都是取代之前的DOM操作
+         -->
+         <button v-on:click="fn1">点击</button>
+    </div>   
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                count:100,
+                age:15
+            },
+            methods:{
+                fn1:function(){
+                    console.log(this.count);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

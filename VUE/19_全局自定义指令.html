@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用自定义指令时需要加v- -->
+        <input type="text" v-focus>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        //全局自定义指令，和过滤器定义相同
+        //1.Vue.directive("指令名"，{inserted(el){}})
+        //inserted(el){自定义指令的具体功能}  使用该指令的dom元素被插入到页面中时会自动触发
+        //3.视图中通过v-指令名 去使用自定义指令
+        //获取焦点功能
+        Vue.directive("focus",{inserted(el){
+           //el指的是该自定义指令的调用者(dom元素)
+           el.focus();
+        }})
+        var vm = new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

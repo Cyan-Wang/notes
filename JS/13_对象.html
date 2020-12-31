@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        /*
+            对象的分类：
+                1.内建对象
+                    -由ES标准中定义的对象，在任何的ES的实现中都可以使用
+                    -如:Math、String、Number、Boolean、Function、Obiect...
+                2.宿主对象
+                    -由JS的运行环境提供的对象，目前来讲指的是浏览器提供的对象
+                    -比如BOM(浏览器对象模型) DOM(文档对象模型)
+                3.自定义对象
+                    -由开发人员自己创建的对象
+        */
+
+        //创建对象
+        /*
+            使用new关键字调用的函数，是构造函数constructor
+            构造函数是专门用来创建对象的函数
+            使用typeof检查一个对象时，会返回object
+        */
+        var obj = new Object();
+
+        /*
+            在对象中保存的值称为属性
+            在对象中添加属性的语法：
+                -对象.属性名 = 属性值
+        */
+        obj.name = "孙悟空";
+        obj.gender = "男";
+        obj.age = 18;
+
+        /*
+            读取对象中的属性
+            语法：对象.属性名
+            如果读取对象中没有的属性，不会报错而是返回undefined
+        */
+
+        /*
+            修改对象的属性值
+            语法：对象.属性名 = 新值
+        */
+
+        /*
+            删除对象的属性
+            语法：delete 对象.属性名
+        */
+
+        /*
+            如果使用特殊的属性名，不能采用.的方式来操作
+            需要使用另一种方式
+                语法：对象["属性名"] = 属性值
+                读取时也需要采用这种方式
+            使用[]这种形式去操作属性，更加的灵活
+            在[]中可以直接传递一个变量，这个变量值是多少就会去读相应的那个属性
+        */
+
+        /*
+            属性值
+            JS对象的属性值可以是任意类型，包括对象类型
+        */
+
+        /*
+            in运算符
+            -通过该运算符可以检查一个对象中是否含有指定的属性，含有则返回true，没有返回false
+            语法："属性名" in 对象
+        */
+        console.log(obj);
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

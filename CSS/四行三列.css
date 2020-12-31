@@ -1,0 +1,46 @@
+*{
+    margin:0;
+    padding:0;
+}
+#container{
+    width:1000px;
+    height:500px;
+    margin:0 auto;
+}
+#header{
+    height:100px;
+    background-color: #6cf;
+    margin-bottom: 5px;
+}
+#nav{
+    height:30px;
+    background-color: #cff;
+    margin-bottom: 5px;
+}
+#main{
+    height:500px;
+    margin-bottom: 5px;;
+}
+.aside{
+    width:150px;
+    height:500px;
+    background-color: #6cf;
+    float:left;
+}
+#aside1{
+
+}
+#aside2{
+    margin-left: 5px;
+}
+#content{
+    width:690px;
+    height:500px;
+    background:#cff;
+    margin-left: 5px;
+    float: left;   
+}
+#footer{
+    height:50px;
+    background:#6cf;
+}

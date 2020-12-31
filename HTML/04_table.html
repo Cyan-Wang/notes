@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!--在HTML中用table创建一个表格-->
+    <table border="1">
+        <!-- 
+            在table标签中使用tr表示表格中的一行,有几行就有几个tr
+         -->
+         <tr>
+             <!-- 在tr中需要使用td来创建一个单元格，有几个单元格就有几个td -->
+             <td>1</td>
+             <td>2</td>
+             <td>3</td>
+             <td>4</td>
+         </tr>
+         <tr>
+             <td>1</td>
+             <td>2</td>
+             <td>3</td>
+             <!-- rowspan用来设置纵向的合并单元格 -->
+             <td rowspan="2">4</td>
+         </tr>
+         <tr>
+             <td>1</td>
+             <td>2</td>
+             <td>3</td>
+         </tr>
+         <tr>
+             <td>1</td>
+             <td>2</td>
+             <!-- colspan横向合并单元格 -->
+             <td colspan="2">3</td>
+         </tr>
+    </table>
+</body>
+</html>

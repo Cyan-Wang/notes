@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- v-model绑定其他表单元素
+            1.多行文本输入框————textarea内容区域的字符是无效的
+        -->
+        <!-- {{msg}} -->
+        <!-- <textarea v-model="msg"></textarea> -->
+
+        <!-- 2.绑定复选框checkbox 
+               当绑定一个复选框时 v-model="bool型"
+               绑定多个复选框时 v-model="[]"
+               数组中保存的值是选中的复选框中的value值
+        -->
+        <!-- {{check}} -->
+        <!-- <input type="checkbox" v-model="check"> -->
+        
+        <!-- {{checklist}} -->
+        <!-- <input type="checkbox" value="男" v-model="checklist">A -->
+        <!-- <input type="checkbox" value="女" v-model="checklist">B -->
+        <!-- <input type="checkbox" value="其他" v-model="checklist">C -->
+
+        <!-- 3.绑定单选按钮 -->
+        <!-- {{picked}} -->
+        <!-- <input type="radio" value="小明" v-model="picked">A -->
+        <!-- <input type="radio" value="小红" v-model="picked">B -->
+
+        <!-- 4.下拉框 
+               (1).select的值来源于被选中的option的value值
+               (2).需要显示默认option时 默认option的value值需和v-model绑定的select值一致
+        -->
+        {{select}}
+        <select v-model="select">
+            <option disabled value="">请选择：</option>
+            <option value="Xi'an">西安</option>
+            <option value="GuangZhou">广州</option>
+            <option value="shenzhen">深圳</option>
+        </select>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"abcd",
+                check:true,
+                checklist:[],
+                picked:"",
+                select:""
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

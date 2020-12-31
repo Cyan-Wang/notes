@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{fn1()}} -->
+        <button @click="fn1()">点击</button>
+    </div>    
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            //Vue大括号内的内容统称为Vue的实例选项
+            /*
+                el:作用是指定、设置当前Vue实例所管理的视图
+                    1.其值可以是id选择器,也可以为其他选择器（比如类别选择器，但只有第一个class会生效）
+                    2.值也可以为DOM元素
+                注意：不能让el直接管理html或body 会报错  --->mount 挂载
+            */
+            el:"#app",
+            //data作用：指定/设置当前Vue实例所管理的视图中要使用的数据
+            //1.data的值可以是一个对象
+            //2.data中的数据 可以通过Vue实例对象.属性名(vm.data) 去访问数据
+            //特点：响应式数据（当数据变化时，视图中用数据的位置会自动发生变化）
+            //注意：不推荐写箭头函数 因为箭头函数的this指向的不是vm实例
+            data:{
+                msg:"abcd",
+                count:1
+            },
+            //methods:写方法
+            //1.可以在视图中通过{{}}调用方法 
+            //2.也可以通过vm对象.方法名去调用
+            //3.方法中的this指的是当前的Vue实例对象
+            //4.可以通过指令调用方法
+            methods:{
+                fn1:function(){
+                    console.log("fn1~~~~");
+                },
+                fn2:function(){
+                    console.log(this);
+                },
+                fn3:function(){
+                    console.log(this.msg);
+                },
+                fn4:()=>{
+                    console.log("fn4~~~~");
+                    console.log(this.msg);
+                },
+                fn5(){
+                    console.log("fn5~~~~~~");
+                    console.log(this.msg);
+                }
+            }
+        })
+        vm.fn5();
+    </script>
+</body>
+</html>

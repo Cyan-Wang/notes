@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 
+        onkeydown:某个键盘按键被按下,如果不松开按键会一直触发
+        onkeyup:某个键盘按键被松开
+     -->
+    <script type="text/javascript">
+        // 键盘事件一般都绑定给一些可以获取到焦点的对象(比如输入框中的光标)或者document
+        window.onload = function(){
+            document.onkeydown = function(event){
+                event = event || window.event;
+                // 可以通过keyCode来获取按键的编码,通过它可以判断按了哪个哦键
+                // 除了keyCode,事件对象中还提供了几个属性：altKey,ctrlKey,shiftKey,按下返回true
+                console.log(event.keyCode);
+            }
+            // document.onkeyup = function(){
+            //     console.log("键盘被松开了~");
+            // }
+            
+            var input = document.getElementsByTagName("input")[0];
+            input.onkeydown = function(){
+                //在文本框中输入内容属于onkeydown默认行为
+                //如果在onkeydown中取消默认行为，则输入的内容不会出现在文本框中
+                console.log("按键按下了~~~");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text"/>
+</body>
+</html>

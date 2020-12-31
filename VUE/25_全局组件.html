@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        //组件：两类（全局、局部） 三步
+        //全局组件：
+        //1.定义Vue.component(组件名，{选项})
+        //  组件名命名建议：abc-xyz
+        //2.写组件{template:`标签`，data等}
+        //  template必须有一个根节点
+        //3.视图中通过组件名（自定义标签）使用
+        //  在后面new Vue所管理的视图使用
+        new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

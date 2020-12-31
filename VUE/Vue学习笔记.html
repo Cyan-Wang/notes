@@ -1,0 +1,40 @@
+01
+    -库和框架的区别（方法是否需要自己来调用）
+02
+03-基础-Vue能做什么
+    -几乎没有DOM操作
+    -适合SPA项目开发
+04-基础-Vue特点
+    -通过指令扩展了HTML,通过表达式绑定数据到HTML(通过指令扩展标签，通过表达式使用数据)
+05-基础-实例选项
+    -el:通常赋值id选择器 注意：不能直接管理html或者body
+    -data:1.响应式数据 2.可以在视图中{{数据}}、可以vm.属性访问数据
+    -methods:1.在视图中{{fn1()}}调方法  2.vm实例对象.fn1()  3.在视图中通过指令 @click="fn1()"
+06-基础-术语解释-插值表达式
+    -最常用的：<p>{{data中的数据}}</p>
+    -注意：var a = 10; if for不能写
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

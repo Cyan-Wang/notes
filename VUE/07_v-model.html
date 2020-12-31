@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        v-model作用：表单元素的绑定
+        解释：v-model绑定的是value值，它把data中的msg的值和value值进行关联
+              当输入框value值变化->msg变->data中的数据->响应式数据->{{msg}}自动更新
+     -->
+   <div id="app">
+       {{msg}}
+       <input type="text" v-model="msg">
+   </div> 
+   <script src="vue.js"></script>
+   <script>
+       var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"abcd"
+            },
+            methods:{
+
+            }
+       })
+   </script>
+</body>
+</html>

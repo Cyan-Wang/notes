@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <child-a :a="msg"></child-a> -->
+        <child-b :b="msg"></child-b>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component("child-a",{
+            //目的:要在子组件中使用数据a 数据a的值来源于父组件
+            template:`<div>我是childa子组件---{{a}}</div>`,
+            //data中的数据只能组件自己使用
+            //选项props:['a']
+            //props中的值是数据
+            //props中的数据的值来源于父组件
+            //props中的数据a和data中的数据用法一样
+            //此时a也是组件<child-a>的属性,props中的a会有这样的特性
+            props:['a']
+        })
+        new Vue({
+            el:"#app",
+            //components选项
+            components:{
+                'child-b':{
+                    template:`<div>我是childb组件--{{b}}</div>`,
+                    props:['b']
+                }
+            },
+            data:{
+                msg:'我是父组件的数据msg'
+            },
+            methods:{
+            }
+        })
+    </script>
+    <script>
+        //组件props中的数据用法和下面一样
+        //1.声明变量 此时没有值
+        // var a;
+        //2.给变量赋值 值为20
+        // a = 20;
+        //3.使用变量a
+        // console.log(a);
+    </script>
+</body>
+</html>
+<!-- 
+    组件通信的情况：
+    1.兄弟组件之间
+    2.父子组件之间
+    3.隔代组件之间
+ -->

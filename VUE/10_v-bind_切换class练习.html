@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 练习：通过点击按钮切换class类名 -->
+        <p :class="{active:isActive}">显示内容</p>
+        <button @click="isActive=!isActive">点击切换</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                isActive:true                
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

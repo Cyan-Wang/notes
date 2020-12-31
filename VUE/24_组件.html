@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 页面中有多个一样结构的标签：span+button -->
+        <!-- <span>{{count1}}</span> <button @click="changCount1">按钮</button><br>
+        <span>{{count2}}</span> <button @click="changCount2">按钮</button><br>
+        <span>{{count3}}</span> <button @click="changCount3">按钮</button><br>
+        <span>{{count4}}</span> <button @click="changCount4">按钮</button><br>
+        <span>{{count5}}</span> <button @click="changCount5">按钮</button><br> -->
+
+        <span-button></span-button>
+        <span-button></span-button>
+        <span-button></span-button>
+        <span-button></span-button>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        //组件目的：span+button+br结构的封装
+        Vue.component('span-button',{
+            template:`
+                    <div>
+                      <span>{{count}}</span>
+                      <button @click='changeCount'>按钮</button>
+                      <br>
+                    </div>
+                     `,
+            data(){
+                return {
+                    count:0
+                }
+            },
+            methods:{
+                changeCount(){
+                    this.count++;
+                }
+            }
+        });
+        new Vue({
+            el:"#app",
+            data:{
+                count1:0,
+                count2:0,
+                count3:0,
+                count4:0,
+                count5:0
+            },
+            methods:{
+                changCount1(){
+                    this.count1++;
+                },
+                changCount2(){
+                    this.count2++;
+                },
+                changCount3(){
+                    this.count3++;
+                },
+                changCount4(){
+                    this.count4++;
+                },
+                changCount5(){
+                    this.count5++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+
+<!-- 
+    什么是组件？
+    需求：如果页面中有多个一样结构的控件
+
+    组件特点:
+    1.组件是一种封装，能够复用已有的HTML、CSS、JS
+    2.是一个特殊的实例(data/methods等选项，但没有el,有自己的选项template)
+    3.每用一次组件，就会有一个它的新实例被创建
+    4.组件中的data必须是一个函数，且需要返回一个对象
+    5.组件有自己的作用域
+    6.template每个组件模板有且只有一个根元素
+ -->

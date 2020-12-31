@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            width: 600px;
+            margin: 10px auto;
+        }
+
+        .tb{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tb th{
+            background-color: #0094ff;
+            color: white;
+        }
+
+        .tb td,
+        .tb th{
+            padding: 5px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .add{
+            padding: 5px;
+            border: 1px solid black;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- 
+    三：添加商品
+    1.找到输入框-> v-model="data中的数据"
+    2.在data中提供一个itemname数据
+    3.找到按钮 绑定事件 @click="方法名"
+    4.在methods中提供一个方法
+    5.在方法中向list数组中添加元素
+
+    四：删除商品
+    1.找到删除按钮 @click="deleteItem"
+    2.在methods中提供deleteItem（）方法
+    3.在deleteItem()中从list移除当前元素
+
+    表格案例的其他效果：1.自动获取焦点 2.日期格式处理
+    五：日期格式处理->过滤器
+
+    五：商品搜索功能
+    //filter是JS中数组自带的方法
+    //遍历数组 可以把满足条件的元素添加到新数组中，并且返回新数组
+    //var arr = [].filter((item)=>{return 条件})     item就是被遍历的数组
+    
+    //ES6新方法
+    //startsWith():返回布尔值，表示参数字符串是否在原字符串的头部。 let s = "Hello World!"    s.startsWith("Hello")//true
+ -->
+<div id="app">
+   <div class="add">
+       品牌名称：
+       <input type="text" v-model="itemname" v-focus>
+       <input type="button" value="添加" @click="addItem()" :disabled="!itemname.length">
+   </div> 
+
+   <div class="add">
+       品牌名称：
+       <input type="text" placeholder="请输入搜索条件" v-model="searchVal">
+   </div>
+
+   <div>
+       <table class="tb">
+            <tr>
+                <th>编号</th>
+                <th>品牌名称</th>
+                <th>创立时间</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="(v,i) in list">
+                <td>{{v.id}}</th>
+                <td>{{v.name}}</th>
+                <td>{{v.date | fmtDate}}</th>
+                <td>
+                    <!-- prevent:拦截默认事件 -->
+                    <a href="#" @click.prevent="deleteItem(v.id)">删除</a>
+                </th>
+            </tr>
+            <tr v-if="list.length===0">
+                <td colspan="4">没有品牌数据</td>
+            </tr>
+       </table>
+   </div>
+</div>
+   <script src="./vue.js"></script>
+   <script src="./moment.js"></script>
+   <script src="./axios.min.js"></script>
+   <script>
+        var vm = new Vue({
+           el:"#app",
+           data:{
+                list:[],
+                //输入框要绑定的数据
+                itemname:"",
+                searchVal:"",
+                newlist:[]
+           },
+           filters:{
+                fmtDate(v){
+                    return moment(v).format("YYYY-MM-DD hh:mm:ss");
+                }
+           },
+           directives:{
+                focus:{
+                    inserted(el){
+                        el.focus();
+                    }
+                }
+           },
+           //当this.searchVal变化同时->axios.get异步操作请求
+           watch:{
+                searchVal(newV,oldV){
+                    axios
+                        .get("http://localhost:3000/brands?name_like="+newV)
+                        .then((res)=>{
+                            const {status,data}=res;
+                            if(status===200){
+                                this.list = data;
+                            }
+                        })
+                }                
+           },
+           computed:{
+               //axios是对ajax的封装，ajax是异步操作，异步操作特点：不等待，后面代码继续执行
+               //此处需要用到回调函数解决，在异步操作外面获取异步操作里面的结果->此为异步编程，回调函数只是其一
+               //异步操作：ajax、定时器、点击事件、数据库操作————异步操作特点：代码不等待 后续代码继续执行
+                // newlist(){
+                //     axios
+                //         .get("http://localhost:3000/brands?name_like="+this.searchVal)
+                //         .then((res)=>{
+                //             const {status,data}=res;
+                //             if(status===200){
+                //                 this.list = data;
+                //             }
+                //         })
+                //         return newList;
+                // }
+           },
+           methods:{
+               //通过网络请求获取所有数据
+               getAllBrands(){
+                   axios
+                        .get("http://localhost:3000/brands")
+                        .then((res)=>{
+                            const {status,data}=res;
+                            if(status===200){
+                                this.list = data;
+                            }
+                        })
+               },
+               //添加商品的方法
+                addItem(){
+                    // this.list.push({
+                    //     name:this.itemname,
+                    //     date:new Date
+                    // });
+                    axios   
+                        .post("http://localhost:3000/brands",{
+                            name:this.itemname,
+                            date:new Date           
+                        })
+                        .then((res)=>{
+                            const {status,data}=res;
+                            if(status===201){
+                                this.getAllBrands();
+                            }
+                        })
+                },
+                //删除商品
+                deleteItem(id){
+                    //splice(索引，长度1)
+                    // if(confirm("确认删除"+this.list[index].name+"？")){
+                    //     this.list.splice(index,1)
+                    // }
+                    if(confirm("确认删除?")){
+                    axios   
+                        .delete("http://localhost:3000/brands/"+id)
+                        .then((res)=>{
+                            const {status,data} = res;
+                            if(status===200){
+                                //更新网页视图
+                                this.getAllBrands();
+                            }
+                        })
+                    }
+                }
+           },
+           mounted(){
+                this.getAllBrands();
+           }
+       })
+   </script>
+</body>
+</html>
+
+<!-- 
+    表格案例-axios使用
+    目的：把list假数据换成axios.get获取的数据
+    引入axios.min.js
+    步骤1.v-for newlist->list
+    2.data中的list:[]
+    3.methods->getAllBrands(){axios.get().then((res)=>{this.list=res.data})}
+    4.mounted(){this.getAllBrands()}
+ -->
+
+ <!-- 
+     axios-搜索功能分析
+     在计算属性newlist(){}方法中进行了异步操作
+     结论：要在异步操作的外面获取异步操作的结果->异步编程-回调函数是其中一种
+     axios如果要使用回调函数则需要修改axios中.then()方法的源码
+
+    异步操作包括：ajax、定时器、点击事件、数据库操作
+    异步操作特点：代码不等待，后续代码继续执行
+
+  -->

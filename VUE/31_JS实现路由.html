@@ -1,0 +1,49 @@
+<!-- 
+    hash写法
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+ </head>
+ <body>
+     <ul>
+         <li><a href="#/aaa">AAA</a></li>
+         <li><a href="#/bbb">BBB</a></li>
+         <li><a href="#/ccc">CCC</a></li>
+         <li><a href="#/ddd">DDD</a></li>
+     </ul>
+     <div id="container">
+
+     </div>
+     <script>
+         var div = document.getElementById("container");
+         //获取到不同的点击a标签对应的hash值
+         //hash值变化时触发该事件
+         window.onhashchange = function(){
+            //  console.log("------");
+            var hash = location.hash;
+            // console.log(hash);
+            hash = hash.replace("#","");
+            switch(hash){
+                case "/aaa":
+                    div.innerHTML = "AAAAA";
+                    break;
+                case "/bbb":
+                    div.innerHTML = "BBBBB";
+                    break;
+                case "/ccc":
+                    div.innerHTML = "CCCCC";
+                    break;
+                case "/ddd":
+                    div.innerHTML = "DDDDD";
+                    break;
+                default:
+                    break;
+            }
+         }
+     </script>
+ </body>
+ </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        v-bind作用：可以绑定标签上的任何属性
+        场景：当标签的属性值是不确定的是可以修改的
+        v-bind绑定一般属性语法：v-bind:要绑定的属性名="data中的数据"
+        简写：去掉v-bind
+     -->
+
+     <div id="app">
+        <!-- <p id="a">内容</p> -->
+        <p v-bind:id="ID">内容</p>
+     </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                ID:"abc"
+            }
+        })
+    </script>
+</body>
+</html>

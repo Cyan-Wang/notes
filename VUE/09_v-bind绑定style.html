@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        v-bind绑定style对象语法
+        :style="{css属性名:data中的数据}"
+     -->
+
+     <!-- 
+         v-bind绑定style的数组语法
+
+      -->
+    <div id="app">
+        <!-- <p :style="{fontSize:a,color:b}">内容</p> -->
+        <p :style="[a,b]">内容2</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                // a:"30px",
+                // b:"red"
+
+                a:{
+                    color:"red"
+                },
+                b:{
+                    fontSize:"30px"
+                }
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

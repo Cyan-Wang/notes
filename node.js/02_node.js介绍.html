@@ -1,0 +1,26 @@
+Node.js是一个能够在服务器端运行JavaScript的开放源代码、
+跨平台JavaScript运行环境。
+
+Node采用Google开发的V8引擎运行js代码，使用事件驱动、
+非阻塞和异步I/O等技术来提高性能，可优化程序的船数量和规模。
+
+Node大部分基础模块都用JavaScript编写。在Node出现之前，
+JS通常作为客户端程序设计语言使用，以JS写出的程序常在用户的
+浏览器上运行。
+
+Node
+    -Node是对ES标准的一个实现，Node也是一个JS引擎
+    -通过Node可以使js代码在服务器端执行
+    -Node仅仅对ES标准进行了实现，所以在Node中不包含DOM和BOM
+    -Node中可以使用所有的内建对象
+    |String Number Boolean Math Date RegExp Function Object Array
+     而DOM和BOM都不能使用，但是可以使用console,也可以使用定时器（setTimeout() setInterval()）
+
+    -Node可以在后台来编写服务器
+     Node编写服务器都是单线程的服务器
+
+    -传统的服务器都是多线程
+     每进来一个请求，就创建一个线程去处理请求
+
+    -Node的服务器是单线程的
+     Node处理请求时是单线程的，但是在后台拥有一个I/O线程池

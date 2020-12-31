@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 过滤器两个小问题：
+        1.传参数，过滤器可以传参数，但过滤器函数的第一个形参总是被处理的数据
+        2.过滤器串联使用
+        {{被处理的数据|过滤器A|过滤器B}}  类比串联电路
+        注意：过滤器A处理的数据是count 过滤器B处理的数据是过滤器A返回的数据
+     -->
+    {{count|toD("元")}}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.filter("toD",(v,y)=>{
+            return "$"+v+y;
+        })
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                count:100
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

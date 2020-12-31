@@ -1,0 +1,78 @@
+{
+  "data": [
+    {
+      "clusterName": "set5",
+      "clusterWeight": "100",
+      "clusterEnable": false,
+      "id": 2
+    },
+    {
+      "clusterName": "set3",
+      "clusterEnable": false,
+      "clusterWeight": "100",
+      "signalCount": 0,
+      "relayCount": 0,
+      "id": 3
+    },
+    {
+      "clusterName": "set7",
+      "clusterEnable": false,
+      "clusterWeight": "100",
+      "signalCount": 0,
+      "relayCount": 0,
+      "id": 4
+    },
+    {
+      "clusterName": "set45",
+      "clusterEnable": false,
+      "clusterWeight": "100",
+      "signalCount": 0,
+      "relayCount": 0,
+      "id": 5
+    },
+    {
+      "clusterName": "22",
+      "clusterEnable": false,
+      "clusterWeight": "969",
+      "signalCount": 0,
+      "relayCount": 0,
+      "id": 1025
+    },
+    {
+      "clusterName": "set190",
+      "clusterEnable": false,
+      "clusterWeight": "100",
+      "signalCount": 0,
+      "relayCount": 0,
+      "id": 1026
+    }
+  ],
+  "server": [
+    {
+      "id": "2",
+      "serverName": "ns-prjs44d8-1304652",
+      "serverEnable": "true",
+      "serverWeight": "100",
+      "serverType": "1",
+      "glsb": "1440302",
+      "outer_ip": "59.111.79.1",
+      "inner_ip": "9.134.71.82",
+      "port": "8000",
+      "alive": "true",
+      "heartbeat": "2020-08-11 20:20:15"
+    },
+    {
+      "id": "1024",
+      "serverName": "ns-prjs44d8-1304653",
+      "serverEnable": "true",
+      "serverWeight": "100",
+      "serverType": "1",
+      "glsb": "1440303",
+      "outer_ip": "59.111.79.2",
+      "inner_ip": "9.134.71.83",
+      "port": "8001",
+      "alive": "true",
+      "heartbeat": "2020-08-11 20:20:16"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            //点击按钮后，修改box1的大小
+            var box1 = document.getElementById("box1");
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function(){
+                //通过JS修改元素样式语法：元素.style.样式名 = 样式值
+                box1.style.width = "300px";
+                //注意：如果CSS样式名中含有减号，这种名称在JS中是不合法的比如background-color
+                //需要将这种样式名修改为驼峰命名法
+                box1.style.backgroundColor = "yellow";
+                //通过style属性设置的样式都是内联样式，而内联样式有较高的优先级，所以通过JS修改的样式往往会立即显示
+                //但如果在样式中写了!important,则此时样式会有最高的优先级即使通过JS也不能覆盖该样式，会导致JS修改失效
+            };
+            var btn02 = document.getElementById("btn02");
+            btn02.onclick = function(){
+            //读取box1的样式 语法：元素.style.样式名
+            //注意：通过style属性设置和读取的都是内联样式
+
+            //获取元素当前显示样式
+            //语法：元素.currentStyle.样式名（只有IE支持）
+            //在其他浏览器中可以使用getComputedStyle()这个方法来获取元素样式，这个是window的方法，可以直接使用
+            //getComputedStyle需要两个参数，第一个：要获取样式的元素，第二个：可以传递一个伪元素，一般都传null
+            var obj = getComputedStyle(box1,null);
+            //该方法会返回一个对象，对象中封装了当前元素对应的样式
+            //如果获取的样式没有设置，则会获取到真实的值,而不是默认值
+            //该方法不支持IE8及以下版本
+            alert(obj.backgroundColor);
+            //通过currentStyle和getComputedStyle()读取到的样式都是只读的，不能修改，如果要修改必须通过style属性
+            }
+
+            //自定义获取样式函数，使同时支持IE8和其他浏览器 
+            function getStyle(obj,name){
+                if(winodw.getComputedStyle){//变量没找到会报错，而属性没找到会返回undefined,避免报错
+                    //正常浏览器
+                    return getComputedStyle(obj,null)[name];
+                }
+                else{
+                    //IE8
+                    return obj.currentStyle[name];   
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <button id="btn01">点我一下</button>
+    <button id="btn02">点我一下</button>
+   <div id="box1"></div> 
+</body>
+</html>

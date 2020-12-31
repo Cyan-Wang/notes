@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id='app'>
+        <!-- 
+            v-on:
+            作用：绑定事件
+            语法： v-on:事件名="methods中的方法"
+         -->
+         {{count}}
+         <button v-on:click="count = count+10">按钮1</button>
+         <button v-on:click="fn2()">按钮2</button>
+    </div>
+<script src="./vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            count:1
+        },
+        methods: {
+            fn2(){
+                console.log('fn2~~~~~~~');
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            float:left;
+            list-style:none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .container{
+            clear:both;
+            height:100px;
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 1.设置链接 -->
+        <!-- 
+            home 首页
+            top 热点
+            music 音乐
+         -->
+        <ul>
+            <router-link to="/home" tag="li"><a>首页</a></router-link>
+            <router-link to="/top" tag="li"><a>热点</a></router-link>
+            <router-link to="/music" tag="li"><a>音乐</a></router-link>
+        </ul>
+        <!-- 2.设置容器 -->
+        <router-view class="container"></router-view>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <script>
+    // 3.提供要渲染的组件
+    var home = {
+        template:`<div>首页首页</div>`
+    }
+    var Top = {
+        template:`<div>热点热点</div>`
+    }
+    var music = {
+        template:`<div>音乐音乐</div>`
+    }
+
+    //4.路由配置
+    var routes = [{
+            name:'home',
+            path:'/home',
+            component:home
+        },
+        {
+            name:'top',
+            path:'/top',
+            component:Top
+        },
+        {
+            name:'music',
+            path:'/music',
+            component:music
+        }
+    ] 
+    // 5.实例化路由
+    var router = new VueRouter({
+        routes
+    })
+    new Vue({
+        el:'#app',
+        // 挂载路由
+        router,
+        dat:{
+
+        },
+        methods:{
+
+        }
+    })
+    </script>
+</body>
+</html>

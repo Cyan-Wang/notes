@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 写在标签开始标签位置相当于属性*/
+        /* 属性选择器 */
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- v-cloak
+        作用：解决插值表达式在使用时的页面闪烁问题    
+        用法：1.给闪烁的标签设置v-cloak,v-cloak不需要赋值
+             2.在style样式中
+             3.当有多个插值表达式需要解决闪烁问题是 可以在最外层div标签设置v-cloak
+    -->
+    <div id="app">
+        <p v-cloak>{{msg}}</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"abcd"
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

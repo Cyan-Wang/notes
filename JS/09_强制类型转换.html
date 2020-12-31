@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        /*
+            强制类型转换：将一个数据类型强制转换为其他数据类型如String、Boolean、Number
+        */
+
+        /*
+            将其他数据类型转换为String
+            方式一：调用被转换数据类型的toString()方法,该方法不会影响到原变量，它会将转换的结果返回。但是null和undefined这两个值没有toString方法
+            方式二：调用String()函数，并将被转换的数据作为参数传递给函数。使用String()函数做强制类型转换时，对于Number和Boolean实际上就是调用toString()方法。
+                    对于null和undefined,它会将null直接转换为"null"、undefined转换为"undefined"
+        */
+        var a = 123;
+        a.toString();
+
+        /*
+            将其他数据类型转换为Number
+            方式一：使用Number()函数
+                    字符串-->数字
+                        1.如果是纯数字的字符串 则直接将其转换为数字
+                        2.如果字符串中有非数字内容，则转换为NaN
+                        3.如果字符串是一个空串或者全部空格的字符串，则转换为0
+                    bool->数字
+                        true转为1 false转为0
+                    Null->数字  0
+                    undefined->数字 NaN
+            
+            方式二：这种方式专门用来处理字符串 如123px
+                    -parseInt() 把一个字符串转换为整数   parseInt()可以将一个字符串的有效整数内容取出来,然后转换为整数
+                    -parseFloat()把一个字符串转换为浮点数 parseFloat()和parseInt()类似
+
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

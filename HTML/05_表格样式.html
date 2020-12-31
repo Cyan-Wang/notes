@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            width: 300px;
+            margin: 0 auto;
+            border: 1px solid black;
+            /* table和td边框之间默认有一个距离，通过border-spacing属性可以设置这个距离 */
+            border-spacing: 0px;
+            /* 
+                border-collapse可以用来设置表格边框合并
+                如果设置了border-collapse,则border-spacing自动失效
+            */
+            border-collapse: collapse;
+        }
+        td{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <!-- table是块元素 -->
+    <table>
+        <tr>
+            <td>学号</td>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>地址</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>孙悟空</td>
+            <td>男</td>
+            <td>花果山</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>猪八戒</td>
+            <td>男</td>
+            <td>高老庄</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>沙僧</td>
+            <td>男</td>
+            <td>流沙河</td>
+        </tr>
+    </table>
+</body>
+</html>
