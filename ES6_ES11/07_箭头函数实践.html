@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ad{
+            width: 200px;
+            height: 200px;
+            background: #58a;
+        }
+    </style>
+    <script>
+        // 需求一：点击div 2s后颜色变成粉色
+        window.onload = function(){
+            // let ad = document.getElementById('ad');
+            // ad.addEventListener('click',function(){
+            //     // 方法1：保存this指向
+            //     // let _this = this;
+            //     // setTimeout(function(){
+            //     //     _this.style.background = 'pink';
+            //     // },2000)
+
+            //     // 方法2：箭头函数,箭头函数this是静态的，始终指向函数声明时所在作用域下的this
+            //     setTimeout(()=>{
+            //         this.style.background = 'pink';
+            //     },2000)
+            // })
+
+
+            // 需求二：从数组中返回偶数的元素
+            const arr = [1,6,9,10,100,25];
+            // const res = arr.filter(function(item){
+            //     if(item % 2 === 0){
+            //         return true;
+            //     }
+            //     else{
+            //         return false;
+            //     }
+            // })
+            const res = arr.filter(item=>item%2 === 0);
+            console.log(res);
+
+            // 箭头函数合适与this无关的回调，定时器，数组的方法回调
+            // 不适合与this有关的回调，如事件回调、对象的方法
+        }
+    </script>
+</head>
+<body>
+    <div id="ad"></div>
+</body>
+</html>

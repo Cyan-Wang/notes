@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //变量不能重复声明
+        // let a =2;
+        // let a =100;
+
+        //块级作用域
+        // {let b = 100;}
+        // console.log(b);
+
+        //不存在变量提升
+        // console.log(c);
+        // let c = 200;
+
+        //不影响作用域链
+        {
+            let school = 'shangguigu';
+            function fn(){
+                console.log(school);
+            }
+            fn();
+        }
+    </script>
+</body>
+</html>

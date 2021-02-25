@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol基本使用</title>
+</head>
+<body>
+    <!-- 
+        ES6引入了一种新的原始数据类型Symbol，表示独一无二的值。它是JS语言的第七种数据类型，
+        是一种类似字符串的数据类型。
+        string\boolen\Array\number\null\udefined
+
+        特点：1).Symbol的值是唯一的，用来解决命名冲突问题
+        2).Symbol值不能和其他数据进行运算
+        3).Symbol定义的对象属性不能使用for...in循环遍历，但可以使用Reflect.ownKeys来获取对象的所有键名
+     -->
+     <script>
+        //  创建Symbol
+        // let s = Symbol();
+        // let s2 = Symbol();
+        // console.log(s === s2);//false
+
+        // let s2 = Symbol('guigu');
+        // let s3 = Symbol('guigu');
+        // console.log(s2 === s3);//false
+
+        // Symbol.for创建
+        // let s4 = Symbol.for('guigu2');
+        // let s5 = Symbol.for('guigu2');
+        // console.log(s4 === s5);//true
+
+        // 注意：Symbol不能与其他数据进行运算
+
+
+        // Symbol实际运用——向对象中添加方法
+        // let game = {
+        // }
+
+        // let methods = {
+        //     up: Symbol(),
+        //     down: Symbol()
+        // };
+
+        // game[methods.up] = function(){
+        //     console.log('我可以改变形状');
+        // }
+        // game[methods.down] = function(){
+        //     console.log('我可以快速下降');
+        // }
+
+        // console.log(game[methods.up]());
+
+        let game2 = {
+            name: '狼人杀',
+            [Symbol('say')]: function(){
+                console.log('我可以发言');
+            },
+            [Symbol('zibao')]: function(){
+                console.log('我可以自爆');
+            }
+        }
+        const a = Object.getOwnPropertySymbols(game2);
+        // const b = Reflect.ownKeys(game2);
+        // console.log(b);
+        // console.log(game2[a[1]]());
+        // game2[b[2]]();
+
+        // Symbol内置属性
+        // 1.isConcatSpreadable
+        // const arr1 = [1,2,3];
+        // const arr2 = [4,5,6];
+        // const arr3 = [4,5,6];
+        // arr3[Symbol.isConcatSpreadable] = false;
+        // console.log(arr1.concat(arr2));
+        // console.log(arr1.concat(arr3));
+
+        // 2.hasInstance
+        // class Person{
+        //     static [Symbol.hasInstance](param){
+        //         console.log(param);
+        //         console.log('我被用来检测类型了');
+        //         return false;
+        //     }
+        // }
+        // let o ={};
+        // console.log(o instanceof Person);
+     </script>
+</body>
+</html>

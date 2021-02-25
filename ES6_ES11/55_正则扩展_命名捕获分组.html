@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则扩展——命名捕获分组</title>
+</head>
+<body>
+    <script>
+        // 声明一个字符串
+        // let str = '<a href="http://www.atguigu.com">尚硅谷</a>'
+        // 提取url与标签文本
+        // const reg = /<a href="(.*)">(.*)<\/a>/;
+        // 执行
+        // const res = reg.exec(str);
+        // console.log(res);
+        //内容是一个Array，第0个元素是整个正则匹配的结果，第1个元素是第一个小括号匹配的内容，第2个元素是第二个小括号匹配的内容,此为捕获
+        // console.log(res[1]);
+        // console.log(res[2]);
+
+
+        let str = '<a href="http://www.atguigu.com">尚硅谷</a>'
+        const reg = /<a href="(?<url>.*)">(?<text>.*)<\/a>/;
+        const res = reg.exec(str);
+        console.log(res);
+        console.log(res.groups.url);
+        console.log(res.groups.text);
+    </script>
+    
+</body>
+</html>

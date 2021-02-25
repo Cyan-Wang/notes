@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX GET</title>
+    <style>
+        #result{
+            width:200px;
+            height:200px;
+            border:solid 1px #90b;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var btn = document.getElementsByTagName('button')[0];
+            var res = document.getElementById('result');
+            btn.onclick = function(){
+                // console.log('here');
+                //AJAX四步操作
+                //1:创建对象
+                const xhr = new XMLHttpRequest();
+                //自动对数据转换,设置响应体属性
+                xhr.responseType = 'json';
+                //2:初始化，设置请求方法和url
+                xhr.open('GET','http://9.134.122.11:8080/get_history_info');
+                //3:发送
+                xhr.send();
+                //4:事件绑定 处理服务端返回的结果
+                //readstate是xhr对象中的属性，有5个值：0~4 
+                //0：未初始化 
+                //1：open方法调用完毕
+                //2：send方法调用完毕
+                //3：服务端返回了部分结果
+                //4：服务端返回了所有结果
+                xhr.onreadystatechange = function(){
+                    //判断服务端返回了所有结果
+                    if(xhr.readyState === 4){
+                        //判断响应状态码
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            //处理结果 包括首行、头部、空行、正文
+                            console.log(xhr.status);//状态码
+                            console.log(xhr.statusText);//状态字符串
+                            console.log(xhr.getAllResponseHeaders());//所有响应头
+                            console.log(xhr.response);//响应体
+                            res.innerHTML = xhr.response;
+                        }
+                        else{
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+   <div id="result"></div> 
+   <button>点击发送请求</button>
+</body>
+</html>

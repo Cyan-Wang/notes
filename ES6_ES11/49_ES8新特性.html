@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES8新特性</title>
+</head>
+<body>
+    <script>
+        // async和await
+        // async和await两种语法结合可以让异步代码像同步代码一样
+
+        // async函数
+        // async函数的返回值为promise对象
+        // promise对象的结果由async函数执行的返回值决定
+        // async function fn(){
+        //     // return '尚硅谷';
+        //     // 情况1：return返回的不是一个promise类型的对象，则结果都是resolved状态的promise对象
+        //     // 情况2：抛出错误
+        //     // throw new Error('出错了！');//返回的结果是一个rejected状态的promise对象
+        //     // 情况3：如果返回一个promise对象，则返回结果由promise对象决定
+        //     return new Promise((resolve,reject)=>{
+        //         // resolve('成功的数据！');
+        //         reject('失败的数据');
+        //     })
+        // }
+
+        // const res = fn();
+        // console.log(res);
+
+        // await表达式
+        // await必须写在async函数中
+        // await右侧的表达式一般为promise对象
+        // await返回的是promise成功的值
+        // await的promise失败率，就会抛出异常。需要通过try...catch捕获处理
+        const p = new Promise((resolve,reject)=>{
+            // resolve('成功的数据');
+            reject('失败的数据');
+        })
+
+        // await要放在async函数中
+        async function fn(){
+            try{
+                let res = await p;
+                console.log(res);
+            }
+            catch(e){
+                console.log(e);
+            }
+        }
+
+        fn();
+    </script>
+</body>
+</html>

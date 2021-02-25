@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery发送AJAX请求</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+        window.onload = function(){
+            $('button').eq(0).click(function(){
+                $.get('http://9.134.122.11:8080/get_history_info',{},function(data){
+                    console.log(data);
+                },'json')
+            })
+
+            $('button').eq(1).click(function(){
+                $.post('http://127.0.0.1:8080/jquery-server',{a:100,b:200},function(data){
+                    console.log(data);
+                },'json')
+            })
+
+            $('button').eq(2).click(function(){
+                $.ajax({
+                    // url: 'http://9.134.122.11:8080/get_history_info',
+                    url:'http://127.0.0.1:8080/jquery-server',
+                    data: {},
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data){
+                        console.log(data);
+                    },
+                    //超时时间
+                    timeout: 2000,
+                    //失败回调
+                    error: function(){
+                        console.log('出错了~');
+                    },
+                    //头信息
+                    headers: {
+                        a:300,
+                        b:400
+                    }
+                })
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">jQuery发送AJAX请求</h2>
+        <button class="btn btn-primary">GET</button>
+        <button class="btn btn-danger">POST</button>
+        <button class="btn btn-info">通用型方法ajax</button>
+    </div>
+</body>
+</html>

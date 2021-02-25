@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--  使用原生DOM -->
+        <script>
+        window.onload = function(){
+            var input = document.getElementById('input');
+            var btn = document.getElementById('btn');
+            btn.onclick = function(){
+                alert(input.value);
+            }
+        }
+    </script>
+
+    <!--  使用jQuery -->
+    <script src='./jQuery.js'></script>
+    <script>
+        // 绑定文档加载完成的监听
+        $(function(){
+            $('#btn2').click(function(){//给btn2绑定点击监听
+                alert($('#input').val());
+            })
+        })
+    </script>
+</head>
+<body>
+    <!--
+        需求：点击“确定”按钮，提示输入的值
+      -->
+    <input type="text" id='input'>
+    <button id='btn'>确定</button>
+    <button id='btn2'>确定(jQuery版)</button>
+</body>
+</html>

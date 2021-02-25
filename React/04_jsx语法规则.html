@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsx语法规则</title>
+    <style>
+        .title{
+            background-color: orange;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1).JSX:全称JavaScript XML
+        2).react定义的一种类似于XML的JS扩展语法:JS + XML
+        3).本质是React.createElement(component,props,...children)方法的语法糖
+        4).作用：用来简化创建虚拟DOM
+            a.写法：var ele = <h1>Hello JSX</h1>
+            b.注意1：它不是字符串，也不是HTML/XML标签
+            c.注意2：它最终产生的就是一个JS对象
+        5).标签名任意：HTML标签或其他标签
+     -->
+    <div id="test"></div>
+    <script type="text/javascript" src="./js/react.development.js"></script>
+    <script type="text/javascript" src="./js/react-dom.development.js"></script>
+    <script type="text/javascript" src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+        const myId = 'aTgUiGu';
+        const myText = 'HeLlo,ReaCt';
+        
+        const VDOM = (
+            <h2 className="title" id={myId.toLowerCase()}>
+                <span style={{color:'white',fontSize:'30px'}}>{myText.toLowerCase()}</span>
+            </h2>
+        )
+        ReactDOM.render(VDOM,document.getElementById('test'));
+        // jsx语法规则：
+        // 1.定义虚拟DOM时，不要写引号
+        // 2.标签中混入JS表达式时要用{}
+        // 3.样式的类名指定要用className
+        // 4.内联样式，要用style={{key:value}}的形式去写。第一个花括号代表使用JS表达式，第二个花括号代表对象
+        // 5.虚拟DOM只能有一个根标签
+        // 6.标签必须闭合
+        // 7.标签首字母
+        //      a.若小写字母开头，则将该标签转为html中同名元素,若html中无该同名元素则报错
+        //      b.若大写字母开头，react就去渲染对应的组件，若组件没有定义，则报错。
+    </script>
+</body>
+</html>

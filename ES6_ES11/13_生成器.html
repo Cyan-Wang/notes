@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器</title>
+</head>
+<body>
+    <script>
+        // 生成器函数是ES6提供的一种异步编程解决方案，语法行为与传统函数完全不同
+        // 形式上，Generator函数有两个特征，一是function关键字与函数名间有个*号；
+        // 二是函数体内部使用yield表达式，定义不同的内部状态
+        // Generator函数调用方法和普通函数一样，但不同的是调用Generator函数后返回的是
+        // 指向内部状态的指针对象即遍历器对象（Iterator Object）
+        // 调用遍历器对象的next方法，使指针对象移向下一个状态。每次调用next方法，内部指针从函数头部或上一次停止的地方开始执行
+        // 遇到下一个yield表达式或return 语句停止。Generator函数分段执行，yield表达式暂停执行，next恢复执行。
+        // function* gen(){
+        //     console.log('111');
+        //     yield '一只没有耳朵';
+        //     console.log('222');
+        //     yield '一只没有尾巴'
+        //     console.log('333');
+        //     yield '真奇怪'
+        // }
+
+        // let it = gen();
+        // console.log(it.next());
+        // console.log(it.next());
+        // console.log(it.next());
+        // console.log(it.next());
+
+        // ----------------------------------------------------------------------------------
+        // 生成器函数参数
+        // function* gen(){
+        //     let one = yield 111;
+        //     console.log(one);
+        //     yield 222;
+        //     yield 333;
+        // }
+
+        // let it = gen();
+        // console.log(it.next('AAA'));
+        // console.log(it.next('BBB'));//next方法也可以传参，作为上一个yield返回结果
+        // ----------------------------------------------------------------------------------
+        // 生成器函数实例
+        // 需求 1s后打印111，2s后打印222，3s后打印333
+        // function one(){
+        //     setTimeout(function(){
+        //         console.log('111');
+        //         it.next();
+        //     },1000)
+        // }
+        // function two(){
+        //     setTimeout(function(){
+        //         console.log('222');
+        //         it.next();
+        //     },2000)
+        // }
+        // function three(){
+        //     setTimeout(function(){
+        //         console.log('333');
+        //         it.next();
+        //     },3000)
+        // }
+
+        // function* fn(){
+        //     yield one();
+        //     yield two();
+        //     yield three();
+        // }
+
+        // let it = fn();
+        // it.next();
+        // ----------------------------------------------------------------------------------
+        // 生成器函数实例2
+        // 模拟获取 用户数据 订单数据 商品数据
+        // function getUsers(){
+        //     setTimeout(function(){
+        //         let data = '用户数据';
+        //         it.next(data);
+        //     },1000)
+        // }
+        // function getOrders(){
+        //     setTimeout(function(){
+        //         let data = '订单数据';
+        //         it.next(data);
+        //     },1000)
+        // }
+        // function getGoods(){
+        //     setTimeout(function(){
+        //         let data = '商品数据';
+        //         it.next(data);
+        //     },1000)
+        // }
+
+
+        // function* fn(){
+        //     let UserData = yield getUsers();
+        //     console.log(UserData);
+        //     let OrdersData =  yield getOrders();
+        //     console.log(OrdersData);
+        //     let GoodData = yield getGoods();
+        //     console.log(GoodData);
+        // }
+
+        // let it = fn();
+        // it.next();
+    </script>
+</body>
+</html>

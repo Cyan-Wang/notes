@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES8对象方法扩展</title>
+</head>
+<body>
+    <script>
+        // Object.values和Object.entries
+        // 1.Object.values()方法返回一个给定对象的所有可枚举属性值的数组
+        // 2.Object.entries()方法返回一个给定对象自身可遍历属性[key,value]的数组
+
+        const school = {
+            name:'尚硅谷',
+            cities:['北京','上海','深圳'],
+            xueke:['前端','大数据','运维']
+        }
+        // console.log(school);
+
+        //获取对象所有的键
+        // console.log(Object.keys(school));
+        //获取对象所有的值
+        // console.log(Object.values(school));
+
+        //entries
+        // console.log(Object.entries(school));
+        // const m = new Map(Object.entries(school));
+        // console.log(m);
+
+        // Object.getOwnPropertyDescriptors
+        // 该方法返回指定对象所有自身属性的描述对象,作用：进行深层次的克隆
+        // console.log(Object.getOwnPropertyDescriptors(school));
+
+        //创建对象
+        const obj = Object.create(null,{//原型对象
+            name:{
+                //设置值
+                value:'尚硅谷',
+                //属性特性
+                writable:true,//可写
+                configurable:true,//可删除
+                enumerable:true//可枚举
+            }
+        });
+        console.log(obj);
+    </script>
+</body>
+</html>

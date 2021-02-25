@@ -1,0 +1,23 @@
+{
+    "name": "ajax",
+    "version": "1.0.0",
+    "description": "ajax example",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "keywords": [
+        "koa",
+        "async"
+    ],
+    "author": "cyan",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "",
+        "url": ""
+    },
+    "dependencies": {
+        "koa": "2.0.0",
+        "koa-router": "7.0.0"
+    }
+}

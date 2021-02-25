@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>取消请求</title>
+    <script>
+        window.onload = function(){
+            var btns = document.getElementsByTagName('button');
+            // let xhr = new XMLHttpRequest();
+            let xhr = null;
+            btns[0].onclick = function(){
+               xhr = new XMLHttpRequest();
+               xhr.open('GET','http://127.0.0.1:8080/delay');
+               xhr.send(); 
+            }
+            btns[1].onclick = function(){
+                xhr.abort();
+            }
+        }
+    </script>
+</head>
+<body>
+    <button>发送请求</button>
+    <button>取消请求</button>
+</body>
+</html>

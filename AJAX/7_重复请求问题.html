@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重复请求问题</title>
+    <script>
+        window.onload = function(){
+            var btns = document.getElementsByTagName('button')[0];
+            // let xhr = new XMLHttpRequest();
+            let xhr = null;
+            let isSending = false;
+            btns.onclick = function(){
+               if(isSending){
+                   xhr.abort();
+               }
+               xhr = new XMLHttpRequest();
+               isSending = true;
+               xhr.open('GET','http://127.0.0.1:8080/delay');
+               xhr.send(); 
+               xhr.onreadystatechange = function(){
+                   if(xhr.readyState === 4){
+                       isSending = false;
+                   }
+               }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button>发送请求</button>
+</body>
+</html>

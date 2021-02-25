@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+   <script>
+    //    [...]扩展运算符能将数组转换为逗号分隔的参数序列
+
+    // 示例
+    // 声明一个数组
+    const Arr = ['a','b','c','d'];
+    // 声明一个函数
+    function fn(){
+        console.log(arguments);
+    }
+
+    // fn(Arr);//arguments中只有一个元素
+    // fn(...Arr);//相当于fn('a','b','c','d')
+
+    // 扩展运算符应用
+    // 1.数组合并
+    // const Arr1 = ['a','b'];
+    // const Arr2 = ['c','d'];
+    // // ES5方法
+    // const New1 = Arr1.concat(Arr2);
+    // console.log(New1);
+    // // 扩展运算符
+    // const New2 = [...Arr1,...Arr2];
+    // console.log(New2);
+
+    //  2.数组克隆(如果原数组中有引用类型则是浅拷贝)
+    // const Arr1 = ['a','b','c'];
+    // const Arr2 = [...Arr1];
+    // console.log(Arr2);
+
+    // 3.将伪数组转为真正的数组
+    const divs = document.getElementsByTagName('div');
+    const divs2 = document.querySelectorAll('div');
+    // const divArr = [...divs];
+    console.log(divs2);
+   </script> 
+</body>
+</html>

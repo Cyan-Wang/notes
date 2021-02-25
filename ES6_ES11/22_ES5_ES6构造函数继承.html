@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象继承</title>
+</head>
+<body>
+    <script>
+        // ES5
+        // 父级
+        // function Phone(brand,price){
+        //     this.brand = brand;
+        //     this.price = price;
+        // }
+        // Phone.prototype.call = function(){
+        //     console.log('通信功能！');
+        // }
+
+        // // 子级
+        // function SmartPhone(brand,price,color,size){
+        //     Phone.call(this,brand,price);
+        //     this.color = color;
+        //     this.size = size;
+        // }
+
+        // SmartPhone.prototype = new Phone();
+        // SmartPhone.prototype.constructor = SmartPhone;
+
+        // SmartPhone.prototype.phone = function(){
+        //     console.log('拍照功能!');
+        // }
+        // let chuizi = new SmartPhone('锤子',2999,'黑色','5.5');
+        // console.log(chuizi);
+
+
+        // ------------------------------------------------------------------------
+        // ES6
+        class Phone{
+            // 构造方法
+            constructor(brand,price){
+                this.brand = brand;
+                this.price = price;
+            }
+
+            call(){
+                console.log('通信功能');
+            }
+        }
+
+        class SmartPhone extends Phone{
+            constructor(brand,price,color,size){
+                super(brand,price);
+                this.color = color;
+                this.size = size;
+            }
+
+            phone(){
+                console.log('拍照功能');
+            }
+
+            game(){
+                console.log('玩游戏');
+            }
+        }
+
+        let xiaomi = new SmartPhone('小米',2999,'黑色',5.5);
+        console.log(xiaomi.call());
+    </script>
+</body>
+</html>

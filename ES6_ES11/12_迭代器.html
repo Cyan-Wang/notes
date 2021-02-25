@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器</title>
+</head>
+<body>
+   <script>
+    //迭代器
+    // 迭代器(iterator)是一种接口，为各种不同的数据结构提供统一访问机制。
+    // 任何数据结构只要部署iterator接口（对象的属性），就可以完成遍历操作。
+    // 1）.ES6创造了一种新的遍历命令for...of循环，iterator接口主要供for...of消费
+    // 2）.原生具备iterator接口的数据（可用for of 遍历）
+    // 如Array、Arguments、Set、Map、String、TypedArray、NodeList
+    // 3).工作原理:创建一个指针对象，指向当前数据结构起始位置.第一次调用对象的next方法，指针自动指向数据结构的第一个成员。
+    //          接下来不断调用next方法，指针一直往后移动，直到指向最后一个成员。每调用next方法返回一个包含value和done属性的对象。
+    // 注意：需要自定义遍历数据的时候，要想到迭代器。
+
+    // const xiyou = ['唐僧','孙悟空','猪八戒','沙僧'];
+    // console.log(xiyou);//有一个Symbol(Symbol.iterator)属性，类型是函数
+    // let iterator = xiyou[Symbol.iterator]();
+    // console.log(iterator);
+    // console.log(iterator.next());
+    // console.log(iterator.next());
+    // console.log(iterator.next());
+    // console.log(iterator.next());
+    // console.log(iterator.next());
+    // console.log(iterator.next().done);
+
+    // 迭代器自定义遍历对象
+    const banji = {
+        name:'终极一班',
+        stus:[
+            'xiaowang',
+            'lee',
+            'zhang',
+            'song'
+        ],
+        [Symbol.iterator]:function(){
+            // let _this = this;
+            let index = 0;
+            return {
+                next: ()=>{
+                    return index < this.stus.length ? {value:this.stus[index++],done:false} : {value:undefined,done:true};
+                }
+            }
+        }
+    }
+
+    let it = banji[Symbol.iterator]();
+    console.log(it);
+    console.log(it.next());
+    console.log(it.next());
+    console.log(it.next());
+    console.log(it.next());
+    console.log(it.next());
+    // for(item in banji){
+    //     console.log(item);
+    // }
+
+    // const banji = {
+    //     name:'终极一班',
+    //     stus:[
+    //         'xiaowang',
+    //         'lee',
+    //         'zhang',
+    //         'song'
+    //     ]
+    // }
+
+    // function makeIterator(obj){
+    //     let index = 0;
+    //     return {
+    //         next:function(){
+    //             return index < obj.stus.length ? {value:obj.stus[index++],done:false}:{value:undefined,done:true};
+    //         }
+    //     }
+    // }
+
+    // var it = makeIterator(banji);
+    // var res = it.next();
+    // var res = it.next();
+    // var res = it.next();
+    // var res = it.next();
+    // var res = it.next();
+    // console.log(res);
+   </script> 
+</body>
+</html>

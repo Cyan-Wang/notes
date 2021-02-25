@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+    <style>
+        #result{
+            width:200px;
+            height:100px;
+            border:solid 1px #89b;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            const res = document.getElementById('result');
+            //绑定键盘按下事件
+            window.onkeydown = function(){
+                // 1.创建对象
+                const xhr = new XMLHttpRequest();
+                //自动对数据转换,设置响应体属性
+                xhr.responseType = 'json';
+
+                // 2.初始化
+                xhr.open('GET','http://9.134.122.11:8080/get_history_info');
+                // 3.发送
+                xhr.send();
+                // 4.事件绑定
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4){
+                        if(xhr.status >= 200 && xhr.status < 300){
+                            // console.log(xhr.response);
+                            // res.innerHTML = xhr.response;
+                            //手动对数据转换
+                            // let data = JSON.parse(xhr.response);
+                            // console.log(data);
+                            // res.innerHTML = data.name;
+                            console.log(xhr.response);
+                            // res.innerHTML = xhr.response.name;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="result"></div>
+</body>
+</html>

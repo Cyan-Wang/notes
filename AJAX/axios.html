@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios发送AJAX请求</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script>
+        window.onload = function(){
+            const btns = document.getElementsByTagName('button');
+            //配置baseURL
+            // axios.defaults.baseURL = 'http://127.0.0.1:8080';
+            btns[0].onclick = function(){
+                //GET请求
+                axios.get('http://127.0.0.1:8080/axios-server',{
+                    //url参数
+                    params:{
+                        id:100,
+                        vip:7
+                    },
+                    //请求头信息
+                    // headers:{
+                    //     name:'atguigu',
+                    //     age:20
+                    // }
+                }).then(value=>{
+                    console.log(value);
+                });
+            }
+            // btns[1].onclick = function(){
+            //     axios.post('http://127.0.0.1:8080/axios-server',{username:'admin',password:'admin'},{
+            //         params:{
+            //             id:200,
+            //             vip:9
+            //         }
+            //         // headers:{
+            //         //     height:180,
+            //         //     weight:180
+            //         // }
+            //     })
+            // }
+            // btns[2].onclick = function(){
+            //     axios({
+            //         //请求方法
+            //         method: 'GET',
+            //         //url
+            //         url: 'http://127.0.0.1:8080'
+            //         //url参数
+            //         // params:{
+            //         //     vip:10,
+            //         //     leavel:30
+            //         // },
+            //         //头信息
+            //         //请求体参数
+            //         // data: {
+            //         //     username: 'admin',
+            //         //     password: 'admin'
+            //         // }
+            //     })
+            // }
+        }
+    </script>
+</head>
+<body>
+   <button>GET</button>
+   <button>POST</button>
+   <button>AJAX</button> 
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        方式1：原型链继承
+            套路：
+            1.定义父类型构造函数
+            2.给父类型的原型添加方法
+            3.定义子类型的构造函数
+            4.创建父类型的对象赋值给子类型的原型
+            5.将子类型原型的构造属性设置为子类型
+            6.给子类型原型添加方法
+            7.创建子类型的对象：可以调用父类型的方法
+            关键：
+            1.子类型的原型为父类型的一个实例对象
+      -->
+    <script>
+        // 父类型
+        function A(){
+            this.Aprop = 'A';
+        }
+        A.prototype.showAprop = function(){
+            console.log(this.Aprop);
+        }
+
+        // 子类型
+        function B(){
+            this.Bprop = 'B';
+        }
+
+        var Aobject = new A();
+        B.prototype = Aobject;
+        B.prototype.constroctor = B;
+        B.prototype.showBprop = function(){
+            console.log(this.Bprop);
+        } 
+
+        var Bobject = new B();
+        Bobject.showAprop();
+        Bobject.showBprop();
+    </script>
+</body>
+</html>

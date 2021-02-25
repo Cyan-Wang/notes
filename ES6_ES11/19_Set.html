@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set</title>
+</head>
+<body>
+   <script>
+    //ES6提供了新的数据结构Set(集合)。它类似于数组，但成员的值都是唯一的，
+    //集合实现了iterator接口，所以可以使用【扩展运算符】和for...of进行遍历。
+    // 集合属性和方法
+    // 1).size返回集合的元素个数
+    // 2).add 增加一个新元素，返回当前集合。
+    // 3).delete 删除元素，返回boolean值
+    // 4).has检测集合中是否包含某个元素，返回boolean值。
+
+
+    // 声明一个set
+    // let s = new Set();
+    // console.log(s,typeof s);
+
+    // 声明时可以传参
+    let s2 = new Set(['a','b','c','d','a']);
+    console.log(s2);
+    // // 增加新元素
+    // s2.add('e');
+    // // 删除元素
+    // s2.delete('d');
+    // // 元素个数
+    // console.log(s2.size);
+    // // 检测是否包含某个元素
+    // console.log(s2.has('f'));
+    // // 清空集合
+    // // s2.clear();
+    // console.log(s2);
+
+    // // 使用for...of遍历
+    // for(let v of s2){
+    //     console.log(v);
+    // }
+
+
+    // ------------------------------------------------------------------
+    // Set集合实践
+    let arr = [1,2,3,4,5,4,3,2,1];
+    // 1.数组去重
+    // let res = [...new Set(arr)]
+    // console.log(res);
+    // 2.求两个数组的交集
+    let arr2 = [4,5,6,5,6];
+    // let res = [...new Set(arr)].filter(item=>{
+    //     let s2 = new Set(arr2);
+    //     if(s2.has(item)){
+    //         return true;
+    //     }
+    //     else{
+    //         return false;
+    //     }
+    // })
+    // console.log(res);
+    // 3.求并集
+    // let union = [...new Set([...arr,...arr2])];
+    // console.log(union);
+    // 4.求差集，差集是相对的
+    let res = [...new Set(arr)].filter(item=>{
+        let s2 = new Set(arr2);
+        if(s2.has(item)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    })
+    console.log(res);
+   </script> 
+</body>
+</html>

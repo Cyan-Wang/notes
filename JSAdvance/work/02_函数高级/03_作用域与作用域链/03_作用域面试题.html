@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var x = 10;
+        // function fn(){
+        //     console.log(x);
+        // }
+        // function show(f){
+        //     var x = 20;
+        //     f();
+        // }
+        //show(fn);//10(查找变量是沿着作用域链来查找的，而作用域是静态的，在函数定义时就已经确定了)
+
+
+        var fn = function(){
+            console.log(fn);
+        }
+        fn();
+
+        var obj = {
+            fn2: function(){
+                console.log(fn2);
+            }
+        }
+        obj.fn2();
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get和set</title>
+</head>
+<body>
+   <script>
+    //    与 ES5 一样，在“类”的内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。
+    class Phone{
+        get price(){
+            console.log('价格属性被读取');
+            return '1234';
+        }
+
+        // 必须有一个参数
+        set price(val){
+            console.log('价格属性被修改');
+        }
+    }
+
+    // 实例化对象
+    let s = new Phone();
+    console.log(s.price);//价格属性被读取 1234
+
+    s.price = 'free';//价格属性被修改
+   </script>
+</body>
+</html>
